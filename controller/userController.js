@@ -6,7 +6,12 @@
 
 angular
 .module('authApp')
-.controller('UserController', UserController);  
+.controller('UserController', UserController);
+
+function navbar(){
+
+
+} 
 
 function UserController($http,$state,$auth) {
 
@@ -17,6 +22,15 @@ console.log(person.email);
 }).error(function(error) {
 vm.error = error;
 });
+
+vm.getId = function(){
+$http.get('http://localhost:8000/api/getid/').success(function(person) {
+vm.person = person;
+console.log(person.email);
+}).error(function(error) {
+vm.error = error;
+});
+};
 
 vm.getUsers = function() {
 // This request will hit the index method in the AuthenticateController

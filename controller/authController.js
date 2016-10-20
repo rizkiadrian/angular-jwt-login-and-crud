@@ -9,7 +9,7 @@ angular
 .controller('AuthController', AuthController);
 
 
-function AuthController($auth, $state) {
+function AuthController($auth, $state,$http) {
 
 var vm = this;
 
@@ -28,6 +28,15 @@ $state.go('users', {});
 .catch(function(response) {
     alert('Invalid username password');
   });
+};
+
+vm.getid = function(){
+$http.get('http://localhost:8000/api/getid/').success(function(person) {
+vm.person = person;
+console.log(person.email);
+}).error(function(error) {
+vm.error = error;
+});
 };
 
 }

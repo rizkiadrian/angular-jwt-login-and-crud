@@ -11,12 +11,24 @@ angular
 function MahasiswaController($http,$state,$auth) {
 
 var vm = this;
+
 vm.main = {
                 page: 1
                 
             };
+vm.mainSearch = {
+                page: 1,
+                search:"",
+                
+               
+
+                
+            };
+
+vm.searcl = vm.mainSearch.search.length;
 
 
+console.log(vm.searcl);
 /* The -R- part */
 $http.get('http://localhost:8000/api/mahasiswa?page=' + vm.main.page).success(function(data){
 // users from your api
@@ -25,6 +37,7 @@ vm.main.mahasiswas = data.data;
 vm.main.pages = data.to;
 });
 vm.PageLoad = function (){
+vm.searcl = vm.mainSearch.search.length;
 $http.get('http://localhost:8000/api/mahasiswa?page=' + vm.main.page).success(function(data){
 // users from your api
 vm.main.mahasiswas = data.data;
@@ -35,18 +48,42 @@ vm.main.pages = data.to;
 
 
 vm.nextPage = function() {
+
 if (vm.main.page < vm.main.pages) {
 vm.main.page++;
+if(vm.mainSearch.search !== ""){
+vm.PageLoadSearch();
+}
+else{
 vm.PageLoad();
+}
 }
 };
 vm.previousPage = function() {
 if (vm.main.page > 1) {
 vm.main.page--;
+if(vm.mainSearch.search !== ""){
+vm.PageLoadSearch();
+}
+else{
 vm.PageLoad();
+}
 }
 };
 /* End of the -R- part */
+
+/*search part*/
+vm.PageLoadSearch = function (){
+vm.searcl = vm.mainSearch.search.length;
+vm.mainSearch.search = vm.search;
+$http.get('http://localhost:8000/api/mahasiswa?page=' + vm.main.page+'&search='+vm.mainSearch.search).success(function(data){
+// users from your api
+vm.main.mahasiswas = data.data;
+// number of pages of users
+vm.main.pages = data.to;
+});
+};
+
 
 /* Create and update function*/
 vm.Savedata = function(modalstate,id){

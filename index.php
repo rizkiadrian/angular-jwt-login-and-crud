@@ -6,24 +6,9 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 <body ng-app="authApp">
-<nav class="navbar navbar-inverse" role="navigation">
-<div ng-controller="UserController as user">
-<a class="navbar-brand" ui-sref="#">Application Web</a>
-<a class="navbar-brand" ui-sref="#">{{user.person.email}}</a>
-</div>
-<ul class="nav navbar-nav">
-<li>
-<a href="#/users">home</a>
-</li>
-<li><a ui-sref="about">About</a></li>
-
-</ul>
-</nav>
 <div class="container">
 <div ui-view></div>
-
 </div>        
-
 </body>
 
 <!-- Application Dependencies -->

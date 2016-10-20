@@ -6,6 +6,7 @@
 
 angular
 .module('authApp', ['ui.router', 'satellizer','ui.bootstrap'])
+.directive('navbar',navbar)
 .run(function ($rootScope, $state, $auth) {
 $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
 if (toState.authenticate && !$auth.isAuthenticated()){
@@ -42,10 +43,20 @@ authenticate:true
 .state('mahasiswa', {
 url: '/mahasiswa',
 templateUrl: '../view/indexmahasiswa.html',
-controller: 'MahasiswaController as mahasiswaco'
+controller: 'MahasiswaController as mahasiswaco',
+authenticate:true
 
 });
 });
+
+function navbar(){
+
+	return {
+
+        templateUrl: "../view/partial/navbar.html"
+
+    };
+}
 
 })();
 

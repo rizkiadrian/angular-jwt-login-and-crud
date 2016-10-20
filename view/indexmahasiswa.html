@@ -1,7 +1,10 @@
+ <div navbar></div>
  <table class="table" >
- <button ng-click='mahasiswaco.previousPage()'>Previous<button>
+ <button ng-click='mahasiswaco.previousPage()'>Previous</button>
  <p>{{mahasiswaco.main.page}}</p>
-  <button ng-click='mahasiswaco.nextPage()'>Next<button>
+  <button ng-click='mahasiswaco.nextPage()'>Next</button>
+  <input type="text" class="form-control" id="Search" placeholder="search here" ng-model="mahasiswaco.search" name="search">
+  <button ng-click='mahasiswaco.PageLoadSearch()'>Search here</button>
    <thead>
    <tr>
    <th>ID</th>

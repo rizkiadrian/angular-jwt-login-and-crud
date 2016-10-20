@@ -1,0 +1,13 @@
+<nav class="navbar navbar-inverse" role="navigation">
+<div ng-controller="UserController as user">
+<a class="navbar-brand" ui-sref="#">Application Web</a>
+<a class="navbar-brand" ui-sref="#">{{user.person.email}}</a>
+</div>
+<ul class="nav navbar-nav">
+<li>
+<a ui-sref="users">home</a>
+</li>
+<li><a ui-sref="mahasiswa">Daftar Mahasiswa</a></li>
+
+</ul>
+</nav>
