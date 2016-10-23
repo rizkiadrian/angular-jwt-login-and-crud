@@ -5,7 +5,7 @@
 'use strict';
 
 angular
-.module('authApp', ['ui.router', 'satellizer','ui.bootstrap'])
+.module('authApp', ['ui.router', 'satellizer'])
 .directive('navbar',navbar)
 .run(function ($rootScope, $state, $auth) {
 $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
@@ -38,6 +38,13 @@ url: '/users',
 templateUrl: '../view/User.html',
 controller: 'UserController as user',
 authenticate:true
+})
+
+.state('images', {
+url: '/images',
+templateUrl: '../view/indeximage.html',
+controller: 'ImageController as image',
+authenticate:false
 })
 
 .state('mahasiswa', {

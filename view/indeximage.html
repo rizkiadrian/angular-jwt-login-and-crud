@@ -1,0 +1,99 @@
+<div navbar></div>
+<div class="container">
+<button id="btn-add" class="btn btn-primary btn-xs" ng-click="image.toggle()">Add New User</button>
+<div class="row">
+<h1>Image List</h1>
+<div class="col-lg-3 col-sm-4 col-xs-6" ng-repeat="data in image.datas">
+<img class="thumbnail img-responsive" id="myImg" src="http://localhost:8000/api/
+image/{{data.id}}.{{data.image_extension}}" ng-click="image.imagemodal(data.id,data.image_extension,data.image_description)">
+<h4 class="center">{{data.author}}</h4>
+<button id="btn-add" class="btn btn-danger btn-xs" ng-click="image.confirmDelete(data.id)">DELETE</button>
+<button id="btn-add" class="btn btn-warning btn-xs" ng-click="image.toggleedit(data.id)">EDIT</button>
+</div>
+<hr>
+<hr>
+</div>
+</div>
+
+<!-- create modal) -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<h4 class="modal-title" id="myModalLabel">{{image.state}}</h4>
+</div>
+<div class="modal-body">
+<form data-toggle="validator" role="form" name="myForm">
+<div class="form-group">
+<label for="inputAuthor" class="control-label" >Author</label>
+<input type="text" class="form-control" id="inputauthor" placeholder="Author" ng-model="image.formData.author" name="myAuthor" required/>
+<span ng-show="myForm.myAuthor.$error.required">Author is required.</span>
+
+</div>
+<div class="form-group">
+<label for="inputImage_description" class="control-label" >Image Description</label>
+<input type="text" class="form-control" id="inputImage_description" placeholder="Image_description" ng-model="image.formData.image_description" name="Myimage_description" required/>
+<span ng-show="myForm.Myimage_description.$error.required">Image Description is required.</span>
+</div>
+<div class="form-group">
+<label for="exampleInputFile">File input</label>
+<file name="image" ng-model="image.formData.image" accept="image/png,image/jpg,image/jpeg"></file>
+</div>
+<div class="form-group">
+<button type="submit" ng-click="image.Savedata(image.modalstate,image.id)" class="btn btn-primary" >Submit</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+<!-- End of Modal -->
+
+
+<!-- edit modal) -->
+<div class="modal fade" id="myModalE" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<h4 class="modal-title" id="myModalLabel">{{image.state}}</h4>
+</div>
+<div class="modal-body">
+<form data-toggle="validator" role="form" name="myForm">
+<div class="form-group">
+<label for="inputAuthor" class="control-label" >Author</label>
+<input type="text" class="form-control" id="inputauthor" placeholder="Author" ng-model="image.formData.author" name="myAuthor" required/>
+<span ng-show="myForm.myAuthor.$error.required">Author is required.</span>
+
+</div>
+<div class="form-group">
+<label for="inputImage_description" class="control-label" >Image Description</label>
+<input type="text" class="form-control" id="inputImage_description" placeholder="Image_description" ng-model="image.formData.image_description" name="Myimage_description" required/>
+<span ng-show="myForm.Myimage_description.$error.required">Image Description is required.</span>
+</div>
+<div class="form-group">
+<button type="submit" ng-click="image.Editdata(image.id)" class="btn btn-primary" ng-disabled="myForm.myAuthor.$dirty && myForm.myAuthor.$invalid ||  
+myForm.Myimage_description.$dirty && myForm.Myimage_description.$invalid" >Submit</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+<!-- End of Modal -->
+
+<!-- show image modal -->
+<!-- The Modal -->
+<div id="ShowModal" class="modalshow">
+<!-- The Close Button -->
+<span class="close" onclick="document.getElementById('ShowModal').style.display='none'">&times;</span>
+<!-- Modal Content (The Image) -->
+<img class="modal-content" id="img01">
+<!-- Modal Caption (Image Text) -->
+<div id="caption"></div>
+</div>
+   
+
+
+

@@ -59,36 +59,14 @@
     <span ng-show="myForm.myEmail.$error.required">Email is required.</span>
     </div>
     <div class="form-group">
-    <button type="submit" ng-click="mahasiswaco.Savedata(mahasiswaco.modalstate,mahasiswaco.id)" class="btn btn-primary" >Submit</button>
+    <button type="submit" ng-click="mahasiswaco.Savedata(mahasiswaco.modalstate,mahasiswaco.id)" class="btn btn-primary" ng-disabled="myForm.MyNama.$dirty && myForm.MyNama.$invalid ||  
+myForm.myEmail.$dirty && myForm.myEmail.$invalid">Submit</button>
     </div>
     </form>
-    <!-- <form class="form-horizontal" name="MyForm" role="form" data-toggle="validator"> >
-    <div class="form-group">
-    <label for="inputEmail3" class="col-sm-3 control-label">NRP</label>
-    <div class="col-sm-9">
-    <input type="text" class="form-control" name="inputNRP" placeholder="Your NRP" value="ABC" ng-model="mahasiswaco.formData.NRP" required>
-    </div>
-    </div>
-    <div class="form-group">
-    <label for="inputEmail3" class="col-sm-3 control-label">Nama</label>
-    <div class="col-sm-9">
-    <input type="text" class="form-control" id="inputEmail3" placeholder="Nama"  value="{{Nama}}"  ng-model="mahasiswaco.formData.Nama">
-    </div>
-    </div>
-    <div class="form-group">
-    <label for="inputEmail3" class="col-sm-3 control-label">Email</label>
-    <div class="col-sm-9">
-    <input type="text" class="form-control" id="inputEmail3" placeholder="your email here" value="{{email}}" ng-model="mahasiswaco.formData.email">
-    </div>
-    </div>
-    </div>
-    <div class="modal-footer">
-    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-    <button type="submit" class="btn btn-primary" id="btn-save" ng-click="mahasiswaco.Savedata(mahasiswaco.modalstate,mahasiswaco.id)">Save changes</button>
-    </form-->
     </div>
     </div>
     </div>
     </div>
+
     <!-- End of Modal -->
-    </div>
+   
